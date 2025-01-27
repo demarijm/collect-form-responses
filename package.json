@@ -1,26 +1,28 @@
 {
-    "name": "collect-form-responses",
-    "type": "module",
-    "module": "index.ts",
-    "scripts": {
-        "dev": "bun run index.ts --watch",
-        "build": "bun build index.ts --outdir dist",
-        "start": "bun run dist/index.js"
-    },
-    "dependencies": {
-        "@sentry/cli": "^2.41.1",
-        "@sentry/node": "^8.51.0",
-        "@sentry/profiling-node": "^8.51.0",
-        "@types/node": "^22.10.10",
-        "body-parser": "^1.20.3",
-        "express": "^4.21.2",
-        "nodemailer": "^6.10.0",
-        "resend": "^4.1.1"
-    },
-    "devDependencies": {
-        "@types/bun": "latest"
-    },
-    "peerDependencies": {
-        "typescript": "^5.0.0"
-    }
+  "name": "collect-form-responses",
+  "type": "module",
+  "module": "index.ts",
+  "scripts": {
+    "dev": "bun run index.ts --watch",
+    "build": "bun build --target=bun index.ts --outdir dist",
+    "start": "bun run dist/index.js"
+  },
+  "dependencies": {
+    "@sentry/cli": "^2.41.1",
+    "@sentry/node": "^8.51.0",
+    "@sentry/profiling-node": "^8.51.0",
+    "@types/node": "^22.10.10",
+    "body-parser": "^1.20.3",
+    "express": "^4.21.2",
+    "nodemailer": "^6.10.0",
+    "resend": "^4.1.1"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.19.5",
+    "@types/bun": "latest",
+    "@types/express": "^5.0.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
 }
