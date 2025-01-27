@@ -16,6 +16,11 @@ if (!process.env.RESEND_API_KEY) {
 // Initialize Resend client
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+//test endpoint
+app.get("/hello", (_, res) => {
+  res.status(200).send("World!");
+});
+
 // Handle form submission
 app.post("/submit", async (req, res) => {
   const formData = req.body; // Form fields
