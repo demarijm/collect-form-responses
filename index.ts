@@ -1,7 +1,8 @@
 import express from "express";
 import bodyParser from "body-parser";
 import { Resend } from "resend";
-
+// const hubspot = require('@hubspot/api-client')
+// import hubspot from "@hubspot/api-client";
 const app = express();
 
 // Parse incoming form-encoded data and JSON
@@ -16,6 +17,8 @@ if (!process.env.RESEND_API_KEY) {
 // Initialize Resend client
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+// const hubspotClient = new hubspot.Client({ accessToken: process.env.HUBSPOT_API_KEY })
+
 app.get("/", (req, res) => {
   res.send("Hello from Express on Render!");
 });
@@ -25,7 +28,13 @@ app.get("/healthz", (req, res) => {
 // Handle form submission
 app.post("/submit", async (req, res) => {
   const formData = req.body; // Form fields
-
+  //   const contactObj = {
+  //     properties: {
+  //         firstname: "",
+  //         lastname: "",
+  //     },
+  // }
+  // const createContactResponse = await hubspotClient.crm.contacts.basicApi.create(contactObj)
   const { data, error } = await resend.emails.send({
     from: "Demari Miller <demari@tecplus.io>",
     to: "demarijmiller@gmail.com",
