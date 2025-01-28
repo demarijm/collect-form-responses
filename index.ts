@@ -16,11 +16,12 @@ if (!process.env.RESEND_API_KEY) {
 // Initialize Resend client
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-//test endpoint
-app.get("/hello", (_, res) => {
-  res.status(200).send("World!");
+app.get("/", (req, res) => {
+  res.send("Hello from Express on Render!");
 });
-
+app.get("/healthz", (req, res) => {
+  res.send("We are healthy!");
+});
 // Handle form submission
 app.post("/submit", async (req, res) => {
   const formData = req.body; // Form fields
@@ -36,9 +37,11 @@ app.post("/submit", async (req, res) => {
     )}`,
   });
   console.log("Form submitted and email sent via Resend!", data);
-  res
-    .status(200)
-    .json({ message: "Form submitted and email sent via Resend!" });
+
+  if (data) {
+    return res.redirect("https://tactileaudiofurniture.com/pages/thank-you");
+  }
+
   if (error) {
     console.error("Error sending via Resend:", error);
     res.status(500).json({ message: "Error sending email" });
