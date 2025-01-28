@@ -1,0 +1,3 @@
+form-response.tecplus.us {
+    reverse_proxy web:3000
+}
